@@ -1,0 +1,5 @@
+﻿Build started...
+1>------ Build started: Project: Practice, Configuration: Debug x64 ------
+1>Practice.vcxproj -> C:\Users\1\source\repos\Functions\x64\Debug\Practice.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Elapsed 00:00,657 ==========
