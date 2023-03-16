@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 using namespace std;
 
 void main()
@@ -7,7 +7,7 @@ void main()
 	const int n = 5;
 	int arr[n] = {};
 
-	cout << "Ââåäèòå ýëåìåíòû ìàññèâà: " << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð°: " << endl;
 	for (int i = 0; i < n; i++)
 	{
 		cin >> arr[i];
@@ -34,9 +34,8 @@ void main()
 		if (arr[i] < min) min = arr[i];
 		if (arr[i] > max) max = arr[i];
 	}
-
-	cout << "Ñóììà ýëåìåíòîâ ìàññèâà: " << SUMM << endl;
-	cout << "Ñðåäíåå àðèôìåòè÷åñêîå çíà÷åíèå: " << arithmetic_mean << endl;
-	cout << "Ìèíèìàëüíûé ýëåìåíò ìàññèâà: " << min << endl;
-	cout << "Ìàêñèìàëüíûé ýëåìåíò ìàññèâà: " << max << endl;
+	cout << "Ð¡ÑƒÐ¼Ð¼Ð° ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°ÑÑÐ¸Ð²Ð°: " << SUMM << endl;
+	cout << "Ð¡Ñ€ÐµÐ´Ð½ÐµÐµ Ð°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: " << arithmetic_mean << endl;
+	cout << "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð¼Ð°ÑÑÐ¸Ð²Ð°: " << min << endl;
+	cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð¼Ð°ÑÑÐ¸Ð²Ð°: " << max << endl;
 }
