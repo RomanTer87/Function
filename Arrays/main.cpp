@@ -1,5 +1,8 @@
 ﻿#include<iostream>
 using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 const int ROWS = 3;
 const int COLS = 4;
@@ -19,20 +22,31 @@ void Print(const double arr[ROWS][COLS], const int ROWS, const int COLS); //+
 void Print(const char arr[ROWS][COLS], const int ROWS, const int COLS); //+
 
 int sum(const int arr[], const int n); //+
+int sum(const int arr[ROWS][COLS], const int ROWS, const int COLS);//+
 double sum(const double arr[], const int n); //+
-double Avg(const int arr[], const int n);
+double sum(const double arr[ROWS][COLS], const int ROWS, const int COLS); //+
+char sum(const char arr[], const int n); //+
+char sum(const char arr[ROWS][COLS], const int ROWS, const int COLS); //+
+
+double Avg(const int arr[], const int n); //+
+double Avg(const int arr[ROWS][COLS], const int ROWS, const int COLS); //+
+
 int minValueIn(const int arr[], const int n); //+
 double minValueIn(const double arr[], const int n); //+
 char minValueIn(const char arr[], const int n); //+
+
 int maxValueIn(const int arr[], const int n); //+
 double maxValueIn(const double arr[], const int n); //+
 char maxValueIn(const char arr[], const int n); //+
 
-void Sort(int arr[], const int n);
+void Sort(int arr[], const int n); //+
+void Sort(double arr[], const int n); //+ 
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void shiftLeft(int arr[], const int n, int number_of_shifts); //+
 void shiftLeft(double arr[], const int n, int number_of_shifts); //+
 void shiftLeft(char arr[], const int n, int number_of_shifts); //+
+
 void shiftRight(int arr[], const int n, int number_of_shifts); //+
 void shiftRight(double arr[], const int n, int number_of_shifts); //+
 void shiftRight(char arr[], const int n, int number_of_shifts); //+
@@ -40,6 +54,9 @@ void shiftRight(char arr[], const int n, int number_of_shifts); //+
 void UniqueRand(int arr[], const int n); //+
 void UniqueRand(double arr[], const int n); //+
 void UniqueRand(char arr[], const int n); //+
+void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
+
+
 void Search(int arr[], const int n); //+
 void Search(double arr[], const int n); //+
 void Search(char arr[], const int n); //+
@@ -78,9 +95,14 @@ void main()
 	Print(d_arr, SIZE);
 #endif // 
 
-
-	double i_arr_2[ROWS][COLS];
-	FillRand(i_arr_2, ROWS, COLS);
+	int i_arr_2[ROWS][COLS];
+	//FillRand(i_arr_2, ROWS, COLS);
+	//Print(i_arr_2, ROWS, COLS);
+	//cout << "Сумма элементов массива: " << sum(i_arr_2, ROWS, COLS) << endl;
+	//cout << "Среднее арифметическое массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
+	//Sort(i_arr_2, ROWS, COLS);
+	//Print(i_arr_2, ROWS, COLS);
+	UniqueRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 }
 //rand(); // возвращает псевдослучайное число в диапазоне от 0 до 32 767 (MAX_RAND)
@@ -205,6 +227,30 @@ int sum(const int arr[], const int n)
 	}
 	return sum;
 }
+int sum(const int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
+double sum(const double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	double sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
 double sum(const double arr[], const int n)
 {
 	double sum = 0;
@@ -214,9 +260,34 @@ double sum(const double arr[], const int n)
 	}
 	return sum;
 }
+char sum(const char arr[], const int n)
+{
+	char sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+}
+char sum(const char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	char sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
 double Avg(const int arr[], const int n)
 {
 	return (double)sum(arr, n) / n;
+}
+double Avg(const int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	return (double)sum(arr, ROWS, COLS) / (ROWS * COLS);
 }
 int minValueIn(const int arr[], const int n)
 {
@@ -331,10 +402,10 @@ void shiftRight(double arr[], const int n, int number_of_shifts)
 {
 	for (int i = 0; i < number_of_shifts; i++)
 	{
-		double buffer = arr[n-1];
-		for (int i = n-1; i > 0; i--)
+		double buffer = arr[n - 1];
+		for (int i = n - 1; i > 0; i--)
 		{
-			arr[i] = arr[i-1];
+			arr[i] = arr[i - 1];
 		}
 		arr[0] = buffer;
 	}
@@ -369,6 +440,47 @@ void Sort(int arr[], const int n)
 			}
 		}
 	}
+}
+void Sort(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			int buffer = arr[i];
+			if (arr[j] < arr[i])
+			{
+				arr[i] = arr[j];
+				arr[j] = buffer;
+			}
+		}
+	}
+}
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int iterations = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					// arr[i][j] - выбранный элемент
+					// arr[k][l] - перебираемый элемент
+					if (arr[k][l] < arr[i][j])
+					{
+						arr[i][j] ^= arr[k][l];
+						arr[k][l] ^= arr[i][j];
+						arr[i][j] ^= arr[k][l];
+					}
+					iterations++;
+				}
+			}
+		}
+	}
+	cout << "Массив отсортирован за " << iterations << " итераций" << endl;
 }
 void UniqueRand(int arr[], const int n)
 {
@@ -415,6 +527,27 @@ void UniqueRand(char arr[], const int n)
 			}
 		}
 	}
+}
+void UniqueRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	/*for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = rand() % 12;
+			for (int k = 0; k <= i; k++)
+			{
+				for (int l = 0; l < j; l++)
+				{
+					if (arr[k][l] == arr[i][j])
+					{
+						arr[i][j]--;
+						break;
+					}
+				}
+			}
+		}
+	}*/
 }
 void Search(int arr[], const int n)
 {
