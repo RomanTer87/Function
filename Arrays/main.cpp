@@ -8,6 +8,8 @@
 #include"UniqueRand.h"
 #include"Search.h"
 
+//#define ARRAYS_1
+#define ARRAYS_2
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -41,6 +43,7 @@ void main()
 	Print(d_arr, SIZE);
 #endif // 
 
+#ifdef ARRAYS_2
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
@@ -59,4 +62,6 @@ void main()
 	Print(i_arr_2, ROWS, COLS);
 	Search(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
+#endif // ARRAYS_2
+
 }
